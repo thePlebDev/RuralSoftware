@@ -9,14 +9,13 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@Entity//todo: need to implement the hashcode and the users
+@Entity
 public class Authority {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @NaturalId
     @NotNull
     private String title;
 
@@ -24,7 +23,7 @@ public class Authority {
     @JoinTable(name="AUTH_USER",
              joinColumns = @JoinColumn(name="AUTH_ID"),
              inverseJoinColumns = @JoinColumn(name = "USER_ID"))
-    private Set<User> users = new HashSet<User>();
+    private Set<User> users = new HashSet<>();
 
     public Authority(String title){
         this.title = title;
