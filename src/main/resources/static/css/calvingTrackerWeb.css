@@ -1,0 +1,49 @@
+.calving-tracker-container{
+    border:2px solid blue;
+    height:89.5vh;
+    display:flex;
+}
+.search-bar{
+    border:2px solid green;
+    width:20%;
+    padding:10px;
+}
+
+.calf-view{
+    border:2px solid red;
+    width:80%;
+    padding:10px;
+}
+
+.search-svg{
+    position:absolute;
+    left:10px;
+    top:10px;
+
+}
+@media only screen and (max-width: 900px) {
+   .search-bar{
+    width:40%;
+}
+.calf-view{
+    width:60%;
+}
+
+}
+
+@media only screen and (max-width: 570px) {
+   .search-bar{
+    display:none;
+}
+.calf-view{
+    width:100%;
+}
+
+}
+@media only screen and (min-width: 570px) {
+    .search-svg{
+        display:none;
+
+    }
+
+}
