@@ -26,7 +26,7 @@ public class User {
     @NotNull
     private String password;
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "users",fetch = FetchType.EAGER)
     private Set<Authority> authorities = new HashSet<Authority>();
 
     public User(){
