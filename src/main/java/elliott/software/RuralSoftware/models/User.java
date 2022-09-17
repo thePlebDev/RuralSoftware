@@ -4,9 +4,7 @@ import com.sun.istack.NotNull;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity(name = "users")//todo: hashCode and equals
 public class User {
@@ -27,7 +25,10 @@ public class User {
     private String password;
 
     @ManyToMany(mappedBy = "users",fetch = FetchType.EAGER)
-    private Set<Authority> authorities = new HashSet<Authority>();
+    private Set<Authority> authorities = new HashSet<>();
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.PERSIST,orphanRemoval = true)
+    private List<Calf> calves = new ArrayList<>();
 
     public User(){
     }
@@ -54,6 +55,7 @@ public class User {
     public Set<Authority> getAuthorities(){
         return this.authorities;
     }
+    public List<Calf> getCalves(){return this.calves;}
 
     //SETTERS
     public void setUsername(String username){
@@ -77,6 +79,9 @@ public class User {
     public void removeAuth(Authority auth){
         this.authorities.remove(auth);
         auth.getUsers().remove(this);
+    }
+    public void addCalf(Calf calf){
+        this.calves.add(calf);
     }
     @Override
     public int hashCode() {

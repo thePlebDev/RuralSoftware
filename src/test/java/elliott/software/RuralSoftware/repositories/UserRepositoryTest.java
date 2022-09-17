@@ -1,6 +1,7 @@
 package elliott.software.RuralSoftware.repositories;
 
 import elliott.software.RuralSoftware.models.Authority;
+import elliott.software.RuralSoftware.models.Calf;
 import elliott.software.RuralSoftware.models.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,24 @@ public class UserRepositoryTest {
 
 
 
+    }
+
+    @Test
+    public void getAllRelatedCalvesTest(){
+        //GIVEN
+        User user = new User();
+        Calf calf1 = new Calf();
+        Calf calf2 = new Calf();
+
+
+        //WHEN
+        user.addCalf(calf1);
+        user.addCalf(calf2);
+        userRepository.save(user);
+        List<Calf> calfList = userRepository.findById(1L).get().getCalves();
+
+        //THEN
+        assertThat(calfList.size()).isEqualTo(2);
     }
 
 }
