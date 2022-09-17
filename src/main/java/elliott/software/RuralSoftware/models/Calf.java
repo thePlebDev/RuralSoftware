@@ -1,6 +1,7 @@
 package elliott.software.RuralSoftware.models;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -40,8 +41,14 @@ public class Calf {
     }
     public String getTagNumber(){return this.tagNumber;}
     public String getCCIANumber(){return this.CCIANumber;}
-    public Date getDateBorn(){return this.dateBorn;}
+    public String getDateBorn(){
+        String pattern = "MM-dd-yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(this.dateBorn);
+        return date;
+    }
     public int getWeight(){return this.weight;}
+    public CalfStatus getStatus(){return this.status;}
 
     //SETTERS
     public void setTagNumber(String tagNumber){
@@ -59,6 +66,8 @@ public class Calf {
     public void setWeight(int weight){
         this.weight = weight;
     }
+    public void setStatus(CalfStatus status){this.status = status;}
 
-    //
+    //UTILITY
+
 }
