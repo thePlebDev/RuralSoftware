@@ -19,7 +19,7 @@ public class Authority {
     @NotNull
     private String title;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="AUTH_USER",
              joinColumns = @JoinColumn(name="AUTH_ID"),
              inverseJoinColumns = @JoinColumn(name = "USER_ID"))
