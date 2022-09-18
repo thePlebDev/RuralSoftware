@@ -32,7 +32,8 @@ public class ProjectConfig {
         http.formLogin();
         http.authenticationProvider(authenticationProvider());
         http.authorizeRequests()
-                .mvcMatchers("/read").hasAuthority("READ");
+                .mvcMatchers("/read").hasAuthority("READ")
+                .mvcMatchers("/products/CalvingTracker").authenticated();
 
 
         return http.build();

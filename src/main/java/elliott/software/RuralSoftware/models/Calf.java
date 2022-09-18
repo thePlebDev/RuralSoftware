@@ -1,6 +1,11 @@
 package elliott.software.RuralSoftware.models;
 
+
+
 import javax.persistence.*;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -10,6 +15,8 @@ public class Calf {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
     private String tagNumber;
     private String description;
     private String CCIANumber;
@@ -67,6 +74,9 @@ public class Calf {
         this.weight = weight;
     }
     public void setStatus(CalfStatus status){this.status = status;}
+    public void setUser(User user){
+        this.user = user;
+    }
 
     //UTILITY
 
